@@ -3,11 +3,17 @@ stages:
   - deploy
   - destroy
 
-image: hashicorp/terraform:1.5.0
+image: alpine:3.18
 
 before_script:
+  # Install Terraform
+  - apk add --no-cache bash curl unzip
+  - curl -LO https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_amd64.zip
+  - unzip terraform_1.5.0_linux_amd64.zip
+  - mv terraform /usr/local/bin/
   - terraform --version
 
+# ---------------- VALIDATE ----------------
 validate:
   stage: validate
   script:
@@ -15,6 +21,7 @@ validate:
     - terraform init
     - terraform validate
 
+# ---------------- DEPLOY ----------------
 deploy:
   stage: deploy
   when: manual
@@ -23,6 +30,7 @@ deploy:
     - terraform init
     - terraform apply -auto-approve
 
+# ---------------- DESTROY ----------------
 destroy:
   stage: destroy
   when: manual
