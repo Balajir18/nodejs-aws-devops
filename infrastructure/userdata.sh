@@ -1,22 +1,25 @@
 #!/bin/bash
+set -e
 
-# Update the server
+# Update system
 yum update -y
 
-# Install Node.js and Git
+# Install Node.js properly (IMPORTANT)
+curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
 yum install -y nodejs git
 
-# Move to ec2-user home directory
+# Move to ec2-user directory
 cd /home/ec2-user
 
-# Clone the application code from GitLab
+# Clone your repository
 git clone https://gitlab.com/cloudinfra1/nodejs-aws-devops.git
 
-# Go inside the app folder
+# Move to application folder
 cd nodejs-aws-devops/application
 
-# Install Node.js dependencies
+# Install dependencies
 npm install
 
-# Start the Node.js application
-npm start
+# Start app in background (AUTOMATION FIX)
+nohup node app.js > /home/ec2-user/app.log 2>&1 &
+disown
