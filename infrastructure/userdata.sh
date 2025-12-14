@@ -13,7 +13,7 @@ cd /home/ec2-user
 git clone https://gitlab.com/cloudinfra1/nodejs-aws-devops.git
 
 # Go inside the app folder
-cd nodejs-aws-devops/app
+cd nodejs-aws-devops/application
 
 # Install Node.js dependencies
 npm install
