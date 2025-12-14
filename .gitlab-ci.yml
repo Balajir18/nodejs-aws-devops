@@ -1,0 +1,32 @@
+stages:
+  - validate
+  - deploy
+  - destroy
+
+image: hashicorp/terraform:1.5.0
+
+before_script:
+  - terraform --version
+
+validate:
+  stage: validate
+  script:
+    - cd infrastructure
+    - terraform init
+    - terraform validate
+
+deploy:
+  stage: deploy
+  when: manual
+  script:
+    - cd infrastructure
+    - terraform init
+    - terraform apply -auto-approve
+
+destroy:
+  stage: destroy
+  when: manual
+  script:
+    - cd infrastructure
+    - terraform init
+    - terraform destroy -auto-approve
