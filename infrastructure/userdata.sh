@@ -10,10 +10,10 @@ yum install -y nodejs git
 cd /home/ec2-user
 
 # Clone the application code from GitLab
-git clone https://gitlab.com/YOUR_USERNAME/YOUR_PROJECT.git
+git clone https://gitlab.com/cloudinfra1/nodejs-aws-devops.git
 
 # Go inside the app folder
-cd YOUR_PROJECT/app
+cd nodejs-aws-devops/app
 
 # Install Node.js dependencies
 npm install
