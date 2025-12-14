@@ -1,17 +1,21 @@
-#!/bin/bash
-set -e
+#!/bin/bash -xe
 
-yum update -y
+# log everything
+exec > /var/log/userdata.log 2>&1
 
-curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
-yum install -y nodejs git
+# install node & git (AL2023 safe)
+dnf install -y nodejs git
 
+# go to home
 cd /home/ec2-user
 
+# clone repo
 git clone https://gitlab.com/cloudinfra1/nodejs-aws-devops.git
 
 cd nodejs-aws-devops/application
 
+# install dependencies
 npm install
 
-nohup node app.js > /home/ec2-user/app.log 2>&1 &
+# start app in background (bulletproof)
+nohup node app.js &
