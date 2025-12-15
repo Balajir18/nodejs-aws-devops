@@ -1,10 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-dnf install -y nodejs git
+dnf install -y docker
+systemctl start docker
+systemctl enable docker
 
-cd /home/ec2-user
-git clone https://gitlab.com/cloudinfra1/nodejs-aws-devops.git
-cd nodejs-aws-devops/application
-
-npm install
-nohup node app.js &
+docker run -d -p 3000:3000 --name balaji-app \
+  docker.io/YOUR_DOCKERHUB_USERNAME/balaji-express-app:latest
