@@ -2,7 +2,7 @@ variable "region" {
   default = "ap-southeast-2"
 }
 
-variable "ami_id" {
+variable "ami" {
   default = "ami-0b3c832b6b7289e44"
 }
 
