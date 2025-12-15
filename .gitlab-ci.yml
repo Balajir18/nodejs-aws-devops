@@ -25,4 +25,25 @@ validate:
   image: hashicorp/terraform:1.5
   script:
     - cd infrastructure
-    - terraform init -backe
+    - terraform init -backend=false
+    - terraform validate
+
+# ---------------- TERRAFORM APPLY ----------------
+apply:
+  stage: apply
+  image: hashicorp/terraform:1.5
+  when: manual
+  script:
+    - cd infrastructure
+    - terraform init
+    - terraform apply -auto-approve
+
+# ---------------- TERRAFORM DESTROY ----------------
+destroy:
+  stage: destroy
+  image: hashicorp/terraform:1.5
+  when: manual
+  script:
+    - cd infrastructure
+    - terraform init
+    - terraform destroy -auto-approve
