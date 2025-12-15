@@ -1,8 +1,19 @@
 stages:
-  - build
   - validate
+  - build
   - apply
   - destroy
+
+# ---------------- TERRAFORM VALIDATE ----------------
+validate:
+  stage: validate
+  image:
+    name: hashicorp/terraform:1.5
+    entrypoint: [""]
+  script:
+    - cd infrastructure
+    - terraform init -backend=false
+    - terraform validate
 
 # ---------------- BUILD DOCKER IMAGE ----------------
 build_image:
@@ -19,19 +30,12 @@ build_image:
     - docker build -t $DOCKER_USERNAME/balaji-express-app:latest .
     - docker push $DOCKER_USERNAME/balaji-express-app:latest
 
-# ---------------- TERRAFORM VALIDATE ----------------
-validate:
-  stage: validate
-  image: hashicorp/terraform:1.5
-  script:
-    - cd infrastructure
-    - terraform init -backend=false
-    - terraform validate
-
 # ---------------- TERRAFORM APPLY ----------------
 apply:
   stage: apply
-  image: hashicorp/terraform:1.5
+  image:
+    name: hashicorp/terraform:1.5
+    entrypoint: [""]
   when: manual
   script:
     - cd infrastructure
@@ -41,7 +45,9 @@ apply:
 # ---------------- TERRAFORM DESTROY ----------------
 destroy:
   stage: destroy
-  image: hashicorp/terraform:1.5
+  image:
+    name: hashicorp/terraform:1.5
+    entrypoint: [""]
   when: manual
   script:
     - cd infrastructure
