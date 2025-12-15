@@ -13,4 +13,3 @@ resource "aws_instance" "app" {
     Name = "Balaji-DevOps-EC2"
   }
 }
-
