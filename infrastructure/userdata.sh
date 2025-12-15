@@ -5,7 +5,8 @@ dnf install -y docker
 systemctl start docker
 systemctl enable docker
 
-sleep 15
+# WAIT for docker to be fully ready
+sleep 20
 
 docker pull docker.io/balaji01817/balaji-express-app:latest
 
