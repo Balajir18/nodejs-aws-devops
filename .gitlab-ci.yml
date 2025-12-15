@@ -1,38 +1,47 @@
 stages:
+  - build
   - validate
-  - deploy
+  - apply
   - destroy
 
-image: alpine:3.18
+# ---------- BUILD DOCKER IMAGE ----------
+build_image:
+  stage: build
+  image: docker:24.0
+  services:
+    - docker:24.0-dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  script:
+    - cd application
+    - docker build -t $DOCKER_USERNAME/balaji-express-app:latest .
+    - docker push $DOCKER_USERNAME/balaji-express-app:latest
 
-before_script:
-  # Install Terraform
-  - apk add --no-cache bash curl unzip
-  - curl -LO https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_amd64.zip
-  - unzip terraform_1.5.0_linux_amd64.zip
-  - mv terraform /usr/local/bin/
-  - terraform --version
-
-# ---------------- VALIDATE ----------------
+# ---------- TERRAFORM VALIDATE ----------
 validate:
   stage: validate
+  image: hashicorp/terraform:1.5
   script:
     - cd infrastructure
-    - terraform init
+    - terraform init -backend=false
     - terraform validate
 
-# ---------------- DEPLOY ----------------
-deploy:
-  stage: deploy
+# ---------- TERRAFORM APPLY ----------
+apply:
+  stage: apply
+  image: hashicorp/terraform:1.5
   when: manual
   script:
     - cd infrastructure
     - terraform init
     - terraform apply -auto-approve
 
-# ---------------- DESTROY ----------------
+# ---------- TERRAFORM DESTROY ----------
 destroy:
   stage: destroy
+  image: hashicorp/terraform:1.5
   when: manual
   script:
     - cd infrastructure
