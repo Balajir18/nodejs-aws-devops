@@ -1,93 +1,84 @@
-# nodejs-aws-devops
+# End-to-End CI/CD Pipeline with Docker, GitLab & AWS
+
+## 📌 Project Overview
+This project demonstrates an **end-to-end CI/CD pipeline** for deploying a **Node.js (Express) web application** on **AWS EC2** using **Docker, GitLab CI/CD, and Terraform**.  
+The workflow automates infrastructure provisioning, server configuration, application build, and deployment.
+
+---
+
+## 🛠️ Technologies Used
+- **Cloud:** AWS (EC2)
+- **Infrastructure as Code:** Terraform
+- **CI/CD:** GitLab CI/CD
+- **Containerization:** Docker
+- **Application:** Node.js (Express)
+- **OS:** Linux
+- **Registry:** Docker Hub
+
+---
+
+## 🏗️ Architecture Overview
+1. Source code is hosted in **GitLab**.
+2. **GitLab CI/CD pipeline** triggers automatically on every code push.
+3. Pipeline builds a **Docker image** and pushes it to **Docker Hub**.
+4. **Terraform** provisions the AWS EC2 instance.
+5. **EC2 User Data** installs Docker and starts the application container.
+6. Application is accessed via the **EC2 public IP**.
+
+---
+
+## 🔄 CI/CD Workflow
+- Code push to GitLab repository
+- Automated Docker image build
+- Image pushed to Docker Hub
+- Application deployed on AWS EC2 using Docker
+
+---
+
+## 🚀 Key Features
+- Fully automated **CI/CD pipeline**
+- **Infrastructure provisioning** using Terraform
+- **Automated server setup** using EC2 User Data
+- **Docker-based application deployment**
+- Consistent and repeatable deployments
+
+---
+
+## 📂 Project Structure
+nodejs-aws-devops/
+├── application/ # Node.js (Express) application source code
+│ └── app.js
+├── infrastructure/ # Terraform configuration and EC2 User Data scripts
+│ └── userdata.sh
+├── .gitlab-ci.yml # GitLab CI/CD pipeline configuration
+└── README.md # Project documentation
 
 
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## ▶️ How to Run (High Level)
+1. Clone the repository.
+2. Configure GitLab CI/CD variables (AWS credentials and Docker Hub credentials).
+3. Apply Terraform to provision the EC2 instance.
+4. Push code changes to GitLab to trigger the CI/CD pipeline.
+5. Access the application using the EC2 public IP.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+## 🎯 Learning Outcomes
+- Hands-on experience with **CI/CD automation**
+- Practical understanding of **Infrastructure as Code**
+- Docker-based application deployment
+- Real-world DevOps workflow using AWS and GitLab
 
-* [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+---
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/cloudinfra1/nodejs-aws-devops.git
-git branch -M main
-git push -uf origin main
-```
+## 👤 Author
+**Balaji**  
+DevOps & Cloud Enthusiast
 
-## Integrate with your tools
+---
 
-* [Set up project integrations](https://gitlab.com/cloudinfra1/nodejs-aws-devops/-/settings/integrations)
-
-## Collaborate with your team
-
-* [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## 📎 Note
+This project is created for **learning and interview demonstration purposes** and follows DevOps best practices.
