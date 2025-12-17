@@ -44,15 +44,18 @@ The workflow automates infrastructure provisioning, server configuration, applic
 
 ---
 
-## 📂 Project Structure
-nodejs-aws-devops/
-├── application/ # Node.js (Express) application source code
-│ └── app.js
-├── infrastructure/ # Terraform configuration and EC2 User Data scripts
-│ └── userdata.sh
-├── .gitlab-ci.yml # GitLab CI/CD pipeline configuration
-└── README.md # Project documentation
+📂 Project Structure
 
+nodejs-aws-devops/
+├── application/                 # Node.js (Express) application source code
+│   └── app.js
+│
+├── infrastructure/              # Terraform configuration and EC2 User Data scripts
+│   └── userdata.sh
+│
+├── .gitlab-ci.yml                # GitLab CI/CD pipeline configuration
+│
+└── README.md                     # Project documentation
 
 
 ---
@@ -81,4 +84,4 @@ DevOps & Cloud Enthusiast
 ---
 
 ## 📎 Note
-This project is created for **learning and interview demonstration purposes** and follows DevOps best practices.
+This project is created for learning and interview demonstration purposes** and follows DevOps best practices.
