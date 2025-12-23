@@ -46,6 +46,7 @@ The workflow automates infrastructure provisioning, server configuration, applic
 
 ## 📁 Project Structure
 
+```text
 nodejs-aws-devops/
 ├── application/
 │   ├── app.js          # Node.js (Express) application
@@ -57,6 +58,7 @@ nodejs-aws-devops/
 │   ├── output.tf      # Public IP output
 │   └── userdata.sh    # EC2 startup automation
 └── .gitlab-ci.yml     # GitLab CI/CD pipeline
+
 
 
 
