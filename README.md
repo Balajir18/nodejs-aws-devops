@@ -54,18 +54,17 @@ application build, and deployment.
 ## 📁 Project Structure
 
 nodejs-aws-devops/
-|-- application/
-|   |-- app.js
-|   |-- package.json
-|   |-- Dockerfile
-|
-|-- infrastructure/
-|   |-- main.tf
-|   |-- variables.tf
-|   |-- output.tf
-|   |-- userdata.sh
-|
-|-- .gitlab-ci.yml
+├── application/
+│   ├── app.js
+│   ├── package.json
+│   └── Dockerfile
+├── infrastructure/
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── output.tf
+│   └── userdata.sh
+└── .gitlab-ci.yml
+
 
 
 --------------------------------------------------
