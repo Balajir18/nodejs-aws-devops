@@ -53,18 +53,18 @@ application build, and deployment.
 
 ## 📁 Project Structure
 
+```text
 nodejs-aws-devops/
 ├── application/
-│   ├── app.js
-│   ├── package.json
-│   └── Dockerfile
+│   ├── app.js          # Node.js (Express) application
+│   ├── package.json    # Dependencies
+│   └── Dockerfile      # Docker image build instructions
 ├── infrastructure/
-│   ├── main.tf
-│   ├── variables.tf
-│   ├── output.tf
-│   └── userdata.sh
-└── .gitlab-ci.yml
-
+│   ├── main.tf         # EC2 creation
+│   ├── variables.tf   # Input variables
+│   ├── output.tf      # Public IP output
+│   └── userdata.sh    # EC2 startup automation
+└── .gitlab-ci.yml     # GitLab CI/CD pipeline
 
 
 --------------------------------------------------
