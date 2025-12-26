@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # End-to-End CI/CD Pipeline with Docker, GitLab & AWS
 
 ## 📌 Project Overview
@@ -99,5 +98,4 @@ DevOps & Cloud Enthusiast
 This project is created for learning and interview demonstration purposes
 and follows DevOps best practices.
 =======
-# nodejs-aws-devops
->>>>>>> e26c57771f7a77694eec573645a8497ca8e90aaf
+
